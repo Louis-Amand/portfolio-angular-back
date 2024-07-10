@@ -8,10 +8,17 @@ const emailRouter = require('./routes/email');
 const cors = require('cors');
 var app = express();
 
+
+const corsOptions = {
+  origin: 'https://www.louis-amand.com',
+  methods: ['POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
